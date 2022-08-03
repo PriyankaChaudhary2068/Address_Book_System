@@ -1,8 +1,7 @@
 package com.bridgelabz.addressBookSystem;
 
-import java.util.Scanner;
-import java.util.ArrayList;
-
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBookSystem {
 	
@@ -130,7 +129,6 @@ public class AddressBookSystem {
 	        System.out.println(addressBook);
 	    }
 
-	    // Method to add multiple contact
 	    public void addMultipleContact() {
 	        System.out.println("Enter Number of Contacts to Add into Contact Book");
 	        int number = scanner.nextInt();
@@ -139,4 +137,14 @@ public class AddressBookSystem {
 	            System.out.println(i + 1 + " Contact added Successfully.. ");
 	        }
 	    }
+
+	    public void showAddressBookDetails() {
+	        if (addressBook.isEmpty()) {
+	            System.out.println("Address book is empty");
+	        } else {
+	            Set<Contact> set = addressBook.stream().collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Contact::toString))));
+	            set.forEach(System.out::println);
+	        }
+	    }
 	}
+	

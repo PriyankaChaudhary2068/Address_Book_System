@@ -106,7 +106,20 @@ public class AddressBook {
 	            addressBook.addMultipleContact();
 	        }
 	    }
+	    
+	    public static void showAddressBookDetails() {
+	        System.out.println("Enter Address Book System Name");
+	        String bookName = scanner.next();
+	        AddressBookSystem address = addressBookSystemMap.get(bookName);
+	        AddressBookSystem addressBookSystem = new AddressBookSystem();
+	        if (address == null) {
+	            System.out.println("No book found this name");
+	        } else {
+	            addressBookSystem.showAddressBookDetails();
+	        }
+	    }
 	}
+	
 
 	        
 		 
