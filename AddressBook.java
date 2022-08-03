@@ -1,73 +1,113 @@
 package com.bridgelabz.addressBookSystem;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.Map;
+import java.util.HashMap;
 
 
 public class AddressBook {
 	
+	  static Map<String, AddressBookSystem> addressBookSystemMap = new HashMap<>();
+	    static Scanner scanner = new Scanner(System.in);
 
-	        static List<Contact> contactList = new ArrayList<Contact>();
-		    static Scanner scanner = new Scanner(System.in);
-		    
-		    public static void addContact() {
-		        System.out.println(" Enter your first name :");
-		        String firstName = scanner.nextLine();
-		        System.out.println(" Enter your last name : ");
-		        String lastName = scanner.nextLine();
-		        System.out.println(" Enter your city name : ");
-		        String city = scanner.nextLine();
-		        System.out.println("Enter your state : ");
-		        String state = scanner.nextLine();
-		        System.out.println(" Enter your zip code : ");
-		        long zip = scanner.nextLong();
-		        System.out.println(" Enter your phone number : ");
-		        long phoneNumber = scanner.nextLong();
-		        System.out.println(" Enter your email : ");
-		        String email = scanner.nextLine();
+	    // Main method
+	    public static void main(String[] args) {
+	        System.out.println("Welcome to AddressBook program");
 
-		        Contact addressBook = new Contact(firstName, lastName, email, city, state, phoneNumber, zip);
-		        contactList.add(addressBook);
-		    }
-		    
-		     // method for editing existing contact
-		     public void editContact()
-		     {
-		        Scanner nameInput = new Scanner(System.in);
-		        System.out.println(" Enter The First Name ");
-		        String fName = nameInput.nextLine();
-		        for (int index = 0; index < contactList.size(); index++)
-		        {
-		            if (contactList.get(index).getFirstName().equals(fName))
-		            {
-		                contactList.remove(index);
-		                AddressBook addressBook = new AddressBook();
-		                AddressBook.addContact();
-		            }   
-		            else
-		            {
-		                System.out.println(" There Is No contact ");
-		            }
-		        }
+	        boolean condition = true;
+	        while (condition) {
+	            System.out.println("\n" + "1.AddNewAddressBook" + "\n" + "2.AddContact" + "\n" + "3.EditContact" + "\n" + "4.DeleteContact" + "\n" + "5.AddMultipleContact");
+	            int option = scanner.nextInt();
+	            switch (option) {
+	                case 1:
+	                    addNewAddressBook();
+	                    break;
+	                case 2:
+	                    addContact();
+	                    break;
+	                case 3:
+	                    editContact();
+	                    break;
+	                case 4:
+	                    deleteContact();
+	                    break;
+	                case 5:
+	                    addMultipleContact();
+	                    break;
+	                default:
+	                    System.out.println("Exit");
+	            }
+	        }
+	    }
 
-            }
-		      // method for deleting existing contact
-		      public void deleteContact()
-		     {
-		         Scanner deleteNameInput = new Scanner(System.in);
-		         String deleteFirstName = deleteNameInput.nextLine();
-		         for (int increment = 0; increment < contactList.size(); increment++)
-		         {
-		             if (contactList.get(increment).getFirstName().equals(deleteFirstName))
-		             {
-		                 contactList.remove(increment);
-		             } 
-		             else {
-		            	 
-		                 System.out.println("Contact Deleted Name Does Not Exist In Address Book");
-		             }
-		         }
-		     }
-		 }
+	    // Method to add new address book
+	    public static void addNewAddressBook() {
+	        System.out.println("Enter the name of new address book");
+	        String bookName = scanner.next();
+	        AddressBookSystem book = addressBookSystemMap.get(bookName);
+	        AddressBookSystem addressBook = new AddressBookSystem();
+	        if (book == null) {
+	            addressBookSystemMap.put(bookName, addressBook);
+	            System.out.println(addressBookSystemMap.entrySet());
+	            System.out.println("Successfully added new address book");
+	        } else {
+	            System.out.println("Address book with this name already exist");
+	        }
+	    }
+
+	    // Method to add contact
+	    public static void addContact() {
+	        System.out.println("Enter the name of address book to add contact");
+	        String bookName = scanner.next();
+	        AddressBookSystem book = addressBookSystemMap.get(bookName);
+	        AddressBookSystem addressBook = new AddressBookSystem();
+	        if (book == null) {
+	            System.out.println("No book found with this name ");
+	        } else {
+	            addressBook.addContactDetails();
+	        }
+	    }
+
+	    // Method to edit contact
+	    public static void editContact() {
+	        System.out.println("Enter the name of address book edit ");
+	        String bookName = scanner.next();
+	        AddressBookSystem book = addressBookSystemMap.get(bookName);
+	        AddressBookSystem addressBook = new AddressBookSystem();
+	        if (book == null) {
+	            System.out.println("Address book doesn't exist");
+	        } else {
+	            addressBook.editContactDetails();
+	        }
+	    }
+
+	    // Method to delete contact
+	    public static void deleteContact() {
+	        System.out.println("Enter the name of address book to delete contact");
+	        String bookName = scanner.next();
+	        AddressBookSystem book = addressBookSystemMap.get(bookName);
+	        AddressBookSystem addressBook = new AddressBookSystem();
+	        if (book == null) {
+	            System.out.println("Address book doesn't exist");
+	        } else {
+	            addressBook.deleteContact();
+	        }
+	    }
+
+	    // Method to add multiple contacts
+	    public static void addMultipleContact() {
+	        System.out.println("Enter the address book name to add multiple contact");
+	        String bookName = scanner.next();
+	        AddressBookSystem book = addressBookSystemMap.get(bookName);
+	        AddressBookSystem addressBook = new AddressBookSystem();
+	        if (book == null) {
+	            System.out.println("Address book doesn't exist");
+	        } else {
+	            addressBook.addMultipleContact();
+	        }
+	    }
+	}
+
+	        
+		 
             
