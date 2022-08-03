@@ -146,5 +146,17 @@ public class AddressBookSystem {
 	            set.forEach(System.out::println);
 	        }
 	    }
+	    
+	     //  Method to search contact details
+	     public void searchContactDetails() {
+	        System.out.println("Enter the city or state to search Contact ");
+	        String input = scanner.next();
+	        for (Contact person : addressBook) {
+	            if (person.getCity().equals(input) || person.getState().equals(input)) {
+	                System.out.println("Matches with city and state name contact is :" + person);
+	            }
+	        }
+	    }
 	}
+	
 	

@@ -118,7 +118,21 @@ public class AddressBook {
 	            addressBookSystem.showAddressBookDetails();
 	        }
 	    }
+	    // Method to search contact by city or state
+	    public static void searchByCityOrState() {
+	        System.out.println("Enter the AddressBookName ");
+	        String bookName = scanner.next();
+	        AddressBookSystem book = addressBookSystemMap.get(bookName);
+	        AddressBookSystem addressBookSystem = new AddressBookSystem();
+	        if (book == null) {
+	            System.out.println("No book found with these name");
+	        } else {
+	            addressBookSystem.searchContactDetails();
+	        }
+	    }
 	}
+	
+
 	
 
 	        
