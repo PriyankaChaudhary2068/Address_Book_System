@@ -47,9 +47,27 @@ public class AddressBook {
 		            }   
 		            else
 		            {
-		                System.out.println(" There is no contact ");
+		                System.out.println(" There Is No contact ");
 		            }
 		        }
 
             }
-         }    
+		      // method for deleting existing contact
+		      public void deleteContact()
+		     {
+		         Scanner deleteNameInput = new Scanner(System.in);
+		         String deleteFirstName = deleteNameInput.nextLine();
+		         for (int increment = 0; increment < contactList.size(); increment++)
+		         {
+		             if (contactList.get(increment).getFirstName().equals(deleteFirstName))
+		             {
+		                 contactList.remove(increment);
+		             } 
+		             else {
+		            	 
+		                 System.out.println("Contact Deleted Name Does Not Exist In Address Book");
+		             }
+		         }
+		     }
+		 }
+            
