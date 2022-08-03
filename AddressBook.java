@@ -31,31 +31,25 @@ public class AddressBook {
 		        contactList.add(addressBook);
 		    }
 		    
-		    public static void main(String[] args)
-		    {
-		        System.out.println(" Welcome To The Address Book Program ");
+		     // method for editing existing contact
+		     public void editContact()
+		     {
+		        Scanner nameInput = new Scanner(System.in);
+		        System.out.println(" Enter The First Name ");
+		        String fName = nameInput.nextLine();
+		        for (int index = 0; index < contactList.size(); index++)
 		        {
-		            Scanner scanner = new Scanner(System.in);
-		            int flag = 1;
-		            while (flag == 1)
+		            if (contactList.get(index).getFirstName().equals(fName))
 		            {
-		                System.out.println("\n Enter : 1.For Adding a Contact Details 2.Exit ");
-		                int choice = scanner.nextInt();
-		                switch (choice) {
-		                    case 1:
-		                        addContact();
-		                        break;
-		                    case 2:
-		                        flag = 0;
-		                        break;
-		                    default:
-		                        System.out.println("Enter a valid choice");
-		                        break;
-		                }
+		                contactList.remove(index);
+		                AddressBook addressBook = new AddressBook();
+		                AddressBook.addContact();
+		            }   
+		            else
+		            {
+		                System.out.println(" There is no contact ");
 		            }
-		            scanner.close();
-
-		            System.out.println(contactList);
 		        }
-		    }
-        }
+
+            }
+         }    
