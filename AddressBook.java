@@ -8,15 +8,16 @@ import java.util.HashMap;
 public class AddressBook {
 	
 	  static Map<String, AddressBookSystem> addressBookSystemMap = new HashMap<>();
-	    static Scanner scanner = new Scanner(System.in);
+	  static Scanner scanner = new Scanner(System.in);
 
-	    // Main method
+
+	   // Main method
 	    public static void main(String[] args) {
 	        System.out.println("Welcome to AddressBook program");
 
 	        boolean condition = true;
 	        while (condition) {
-	            System.out.println("\n" + "1.AddNewAddressBook" + "\n" + "2.AddContact" + "\n" + "3.EditContact" + "\n" + "4.DeleteContact" + "\n" + "5.AddMultipleContact");
+	            System.out.println("\n" + "1.AddNewAddressBook" + "\n" + "2.AddContact" + "\n" + "3.EditContact" + "\n" + "4.DeleteContact" + "\n" + "5.AddMultipleContact" + "\n" + "6.ShowAddressBookDetails" + "\n" + "7.SearchContactByCityOrState");
 	            int option = scanner.nextInt();
 	            switch (option) {
 	                case 1:
@@ -33,6 +34,12 @@ public class AddressBook {
 	                    break;
 	                case 5:
 	                    addMultipleContact();
+	                    break;
+	                case 6:
+	                    showAddressBookDetails();
+	                    break;
+	                case 7:
+	                    searchByCityOrState();
 	                    break;
 	                default:
 	                    System.out.println("Exit");
@@ -106,7 +113,8 @@ public class AddressBook {
 	            addressBook.addMultipleContact();
 	        }
 	    }
-	    
+
+	    // Method to display the address book details
 	    public static void showAddressBookDetails() {
 	        System.out.println("Enter Address Book System Name");
 	        String bookName = scanner.next();
@@ -118,6 +126,7 @@ public class AddressBook {
 	            addressBookSystem.showAddressBookDetails();
 	        }
 	    }
+
 	    // Method to search contact by city or state
 	    public static void searchByCityOrState() {
 	        System.out.println("Enter the AddressBookName ");
@@ -130,11 +139,4 @@ public class AddressBook {
 	            addressBookSystem.searchContactDetails();
 	        }
 	    }
-	}
-	
-
-	
-
-	        
-		 
-            
+	}    
