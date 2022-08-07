@@ -7,17 +7,17 @@ import java.util.HashMap;
 
 public class AddressBook {
 	
-	  static Map<String, AddressBookSystem> addressBookSystemMap = new HashMap<>();
-	  static Scanner scanner = new Scanner(System.in);
+	    static Map<String, AddressBookSystem> addressBookSystemMap = new HashMap<>();
+	    static Scanner scanner = new Scanner(System.in);
+	    static AddressBookSystem addressBook = new AddressBookSystem();
 
-
-	   // Main method
+	    // Main method
 	    public static void main(String[] args) {
 	        System.out.println("Welcome to AddressBook program");
 
 	        boolean condition = true;
 	        while (condition) {
-	            System.out.println("\n" + "1.AddNewAddressBook" + "\n" + "2.AddContact" + "\n" + "3.EditContact" + "\n" + "4.DeleteContact" + "\n" + "5.AddMultipleContact" + "\n" + "6.ShowAddressBookDetails" + "\n" + "7.SearchContactByCityOrState");
+	            System.out.println("\n" + "1.AddNewAddressBook" + "\n" + "2.AddContact" + "\n" + "3.EditContact" + "\n" + "4.DeleteContact" + "\n" + "5.AddMultipleContact" + "\n" + "6.ShowAddressBookDetails" + "\n" + "7.SearchContactByCityOrState" + "\n" + "8.SortContactByName");
 	            int option = scanner.nextInt();
 	            switch (option) {
 	                case 1:
@@ -40,6 +40,9 @@ public class AddressBook {
 	                    break;
 	                case 7:
 	                    searchByCityOrState();
+	                    break;
+	                case 8:
+	                    sortByPersonName();
 	                    break;
 	                default:
 	                    System.out.println("Exit");
@@ -139,4 +142,16 @@ public class AddressBook {
 	            addressBookSystem.searchContactDetails();
 	        }
 	    }
-	}    
+
+	    // Method to sort contact by person name
+	    public static void sortByPersonName() {
+	        System.out.println("Enter the AddressBookName ");
+	        String bookName = scanner.next();
+	        AddressBookSystem book = addressBookSystemMap.get(bookName);
+	        if (book == null) {
+	            System.out.println("No book found with these name");
+	        } else {
+	            addressBook.sortByPersonName();
+	        }
+	    }
+	}
